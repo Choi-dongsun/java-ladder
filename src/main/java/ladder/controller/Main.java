@@ -8,6 +8,6 @@ public class Main {
     public static void main(String[] args) {
         LadderGame ladder = new LadderGame();
         ladder.runGame(InputView.inputNumOfPlayer(), InputView.inputNumOfLadder());
-        ResultView.printResult(LadderGame.ladders);
+        ResultView.printResult(ladder.ladders);
     }
 }
