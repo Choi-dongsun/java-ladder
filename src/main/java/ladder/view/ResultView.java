@@ -4,7 +4,6 @@ import ladder.model.LadderLine;
 import java.util.ArrayList;
 
 public class ResultView {
-
     private static final String VERTICAL = "|";
     private static final String HORIZONTAL = "-";
     private static final String BLANK = " ";

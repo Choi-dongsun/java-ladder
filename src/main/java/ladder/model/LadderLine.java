@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class LadderLine {
-
     private static Random rnd = new Random();
     private ArrayList<Integer> lines = new ArrayList<>();
 
