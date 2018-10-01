@@ -1,15 +1,27 @@
-package ladder.model;
+package ladder.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LadderGame {
-    public ArrayList<LadderLine> ladders = new ArrayList<>();
+    private ArrayList<LadderLine> ladders = new ArrayList<>();
+    public static ArrayList<User> user = new ArrayList<>();
 
-    public void runGame(int numOfPlayer, int numOfLadder){
+    private void readyGame(List<String> nameOfPlayer) {
+        for (String userName : nameOfPlayer) {
+            user.add(new User(userName));
+        }
+    }
+
+    public ArrayList<LadderLine> runGame(List<String> nameOfPlayer, int numOfLadder){
         ladders = makeLadders(numOfLadder);
+        int numOfPlayer = nameOfPlayer.size();
+        readyGame(nameOfPlayer);
+
         for(LadderLine ladder : ladders){
             makeLines(numOfPlayer, ladder);
         }
+        return ladders;
     }
 
     private static ArrayList<LadderLine> makeLadders(int numOfLadder){
