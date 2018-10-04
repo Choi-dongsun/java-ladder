@@ -5,7 +5,7 @@ import java.util.List;
 
 public class LadderGame {
     private ArrayList<LadderLine> ladders = new ArrayList<>();
-    public static ArrayList<User> user = new ArrayList<>();
+    private ArrayList<User> user = new ArrayList<>();
 
     private void readyGame(List<String> nameOfPlayer) {
         for (String userName : nameOfPlayer) {
@@ -36,6 +36,14 @@ public class LadderGame {
         for(int i = 0; i < numOfPlayer - 1; i++){
             ladder.makeHorizontalLine();
         }
+    }
+
+    public ArrayList<LadderLine> getLadders() {
+        return ladders;
+    }
+
+    public ArrayList<User> getUsers() {
+        return user;
     }
 
 }
