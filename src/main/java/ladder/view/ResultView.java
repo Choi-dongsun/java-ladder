@@ -14,7 +14,7 @@ public class ResultView {
     private static final String BLANK = " ";
     private static final String EXPLAIN_RESULT = "실행결과";
     private static final int ZERO = 0;
-    private static int MAX_NAME_LENGTH_OF_USER = 0;
+    public static int MAX_NAME_LENGTH_OF_USER = 0;
 
     private static StringBuilder resultOfLadder = new StringBuilder();
 
@@ -47,7 +47,7 @@ public class ResultView {
         return resultOfLadder.toString();
     }
 
-    private static String cutNameLength(String name) {
+    public static String cutNameLength(String name) {
         if(name.length() > getMaxNameLength()) {
             return  name.substring(ZERO, getMaxNameLength());
         }

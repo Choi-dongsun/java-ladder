@@ -5,9 +5,9 @@ import java.util.List;
 
 public class LadderGame {
     private ArrayList<LadderLine> ladders = new ArrayList<>();
-    private ArrayList<User> user = new ArrayList<>();
+    public ArrayList<User> user = new ArrayList<>();
 
-    private void readyGame(List<String> nameOfPlayer) {
+    public void readyGame(List<String> nameOfPlayer) {
         for (String userName : nameOfPlayer) {
             user.add(new User(userName));
         }

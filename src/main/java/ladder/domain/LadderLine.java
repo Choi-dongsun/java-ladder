@@ -8,27 +8,28 @@ public class LadderLine {
     private static final int ONE = 1;
     private static final int BooleanCheckNum = 2;
     private static Random rnd = new Random();
-    private ArrayList<Boolean> lines = new ArrayList<>();
 
-    void makeHorizontalLine() {
+    public ArrayList<Boolean> lines = new ArrayList<>();
+
+    public void makeHorizontalLine() {
         this.lines.add(this.decideNextHorizontalLine());
     }
 
-    private boolean decideNextHorizontalLine() {
+    public boolean decideNextHorizontalLine() {
         if (lines.size() != ZERO) {
             return checkBeforeHorizontalLine();
         }
         return this.makeRandomValue();
     }
 
-    private boolean checkBeforeHorizontalLine() {
+    public boolean checkBeforeHorizontalLine() {
         if (lines.get(lines.size() - ONE)) {
             return false;
         }
         return this.makeRandomValue();
     }
 
-    private boolean makeRandomValue() {
+    public boolean makeRandomValue() {
         return rnd.nextInt(BooleanCheckNum) == 1;
     }
 

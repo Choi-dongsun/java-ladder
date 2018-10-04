@@ -51,7 +51,7 @@ public class InputView {
         return sc.nextInt();
     }
 
-    public static int getMaxNameLength() {
+    static int getMaxNameLength() {
         return MAX_NAME_LENGTH;
     }
 
