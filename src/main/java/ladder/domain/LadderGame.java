@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LadderGame {
-    private ArrayList<LadderLine> ladders = new ArrayList<>();
+    private ArrayList<LadderLine> ladders;
     private ArrayList<User> users;
     private List<String> resultOfGame;
 
@@ -25,7 +25,7 @@ public class LadderGame {
         resultOfGame = input.inputResult();
         readyGame(nameOfPlayer);
 
-        ladders = makeLadders(input.inputNumOfLadder());
+        this.ladders = makeLadders(input.inputNumOfLadder());
         for(LadderLine ladder : ladders){
             makeLines(nameOfPlayer.size(), ladder);
         }
