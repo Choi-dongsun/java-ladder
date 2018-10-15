@@ -16,12 +16,11 @@ public class ResultView {
     private static final String EXPLAIN_RESULT = "사다리 결과";
     private static final String EXPLAIN_PLAYER_RESULT = "실행 결과";
     private static final int FIVE = 5;
-    public static int MAX_NAME_LENGTH_OF_USER = 0;
 
     private static StringBuilder resultOfLadder = new StringBuilder();
 
     public static void printResult(LadderGame ladder){
-        decideMaxNameLengthOfUser(ladder.getUsers());
+//        decideMaxNameLengthOfUser(ladder.getUsers());
 
         System.out.println(EXPLAIN_RESULT);
         for (User user : ladder.getUsers()) {
@@ -86,20 +85,6 @@ public class ResultView {
             return  name.substring(LadderLine.ZERO, getMaxNameLength());
         }
         return String.format("%-5s", name);
-    }
-
-    private static void decideMaxNameLengthOfUser(ArrayList<User> users) {
-        for (User user : users) {
-            if (compareMaxNameLengthOfUser(user)) return;
-        }
-    }
-
-    private static boolean compareMaxNameLengthOfUser(User user) {
-        int size = user.getName().length();
-        if (size > MAX_NAME_LENGTH_OF_USER) {
-            MAX_NAME_LENGTH_OF_USER = size;
-        }
-        return false;
     }
 
     private static String calculateNumHorizontal(String horizontal) {

@@ -47,7 +47,7 @@ public class InputView {
         }
     }
 
-    public static List<String> inputResult() {
+    public List<String> inputResult() {
         System.out.println(ASK_RESULT_OF_GAME);
         return splitNames(sc.nextLine());
     }
