@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class InputView {
     private static final String ASK_NAME_OF_PLAYER = "참여할 사람 이름을 입력하세요. (이름은 쉼표(,)로 구분하세요)";
+    private static final String ASK_RESULT_OF_GAME = "실행 결과를 입력하세요. (결과는 쉼표(,)로 구분하세요)";
+    private static final String ASK_PLAYER_RESULT_OF_GAME = "결과를 보고 싶은 사람은?";
     private static final String ASK_HEIGHT_OF_LADDER = "최대 사다리 높이는 몇 개인가요?";
     private static final String WARNING_MESSAGE = "이름은 5자 이내로 입력하시오.";
     private static final int MAX_NAME_LENGTH = 5;
@@ -13,7 +15,7 @@ public class InputView {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static List<String> inputNameOfPlayer() {
+    public List<String> inputNameOfPlayer() {
         List<String> names;
         while(true) {
             try {
@@ -27,9 +29,9 @@ public class InputView {
         }
     }
 
-    private static List<String> splitNames(String inputNames) {
-        List<String> names = Arrays.asList((inputNames).split(","));
-        return names;
+    private static List<String> splitNames(String inputThing) {
+        List<String> thing = Arrays.asList((inputThing).split(","));
+        return thing;
     }
 
     private static List<String> checkNameLength(List<String> names) throws Exception {
@@ -45,10 +47,19 @@ public class InputView {
         }
     }
 
-    public static int inputNumOfLadder() {
-        System.out.println();
+    public static List<String> inputResult() {
+        System.out.println(ASK_RESULT_OF_GAME);
+        return splitNames(sc.nextLine());
+    }
+
+    public static String inputPlayerResult(){
+        System.out.println(ASK_PLAYER_RESULT_OF_GAME);
+        return sc.nextLine();
+    }
+
+    public int inputNumOfLadder() {
         System.out.println(ASK_HEIGHT_OF_LADDER);
-        return sc.nextInt();
+        return Integer.parseInt(sc.nextLine());
     }
 
     static int getMaxNameLength() {

@@ -1,15 +1,16 @@
 package ladder.domain;
 
+import ladder.util.RandomGenerator;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class LadderLine {
-    private static final int ZERO = 0;
-    private static final int ONE = 1;
-    private static final int BooleanCheckNum = 2;
-    private static Random rnd = new Random();
+    public static final int ZERO = 0;
+    public static final int ONE = 1;
+    private ArrayList<Boolean> lines;
 
-    public ArrayList<Boolean> lines = new ArrayList<>();
+    public LadderLine(ArrayList<Boolean> lines) {
+        this.lines = lines;
+    }
 
     public void makeHorizontalLine() {
         this.lines.add(this.decideNextHorizontalLine());
@@ -19,22 +20,21 @@ public class LadderLine {
         if (lines.size() != ZERO) {
             return checkBeforeHorizontalLine();
         }
-        return this.makeRandomValue();
+        return RandomGenerator.makeRandomValue();
     }
 
     public boolean checkBeforeHorizontalLine() {
         if (lines.get(lines.size() - ONE)) {
             return false;
         }
-        return this.makeRandomValue();
-    }
-
-    public boolean makeRandomValue() {
-        return rnd.nextInt(BooleanCheckNum) == 1;
+        return RandomGenerator.makeRandomValue();
     }
 
     public ArrayList<Boolean> getLines() {
         return this.lines;
     }
+
+
+
 
 }
