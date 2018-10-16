@@ -14,7 +14,7 @@ public class LadderGame {
         this.users = users;
     }
 
-    public void readyGame(List<String> nameOfPlayer) {
+    private void readyGame(List<String> nameOfPlayer) {
         for (int i = 0; i < nameOfPlayer.size(); i++) {
             users.add(new User(nameOfPlayer.get(i), i));
         }
@@ -31,7 +31,7 @@ public class LadderGame {
         }
 
         for(User user : users) {
-            user.move(ladders);
+            userMove(user);
             user.linkResult(resultOfGame);
             resultDic.put(user.getName(), user.getResult());
         }
@@ -48,6 +48,12 @@ public class LadderGame {
     private static void makeLines(int numOfPlayer, LadderLine ladder){
         for(int i = 0; i < numOfPlayer - 1; i++){
             ladder.makeHorizontalLine();
+        }
+    }
+
+    private void userMove(User user) {
+        for (LadderLine ladder : ladders) {
+            ladder.decideDirection(user);
         }
     }
 
