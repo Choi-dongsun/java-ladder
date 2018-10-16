@@ -20,8 +20,6 @@ public class ResultView {
     private static StringBuilder resultOfLadder = new StringBuilder();
 
     public static void printResult(LadderGame ladder){
-//        decideMaxNameLengthOfUser(ladder.getUsers());
-
         System.out.println(EXPLAIN_RESULT);
         for (User user : ladder.getUsers()) {
             System.out.printf(cutNameLength(user.getName()) + BLANK);
@@ -35,7 +33,7 @@ public class ResultView {
         }
 
         System.out.println();
-        printResultDetails();
+        printResultDetails(ladder);
     }
 
     private static String printLineImage(ArrayList<Boolean> lines){
@@ -51,32 +49,32 @@ public class ResultView {
         return resultOfLadder.toString();
     }
 
-    private static void printResultDetails() {
+    private static void printResultDetails(LadderGame ladder) {
         boolean flag = true;
 
         while(flag) {
             String userInput = InputView.inputPlayerResult();
-            printEachPlayerResult(userInput);
+            printEachPlayerResult(userInput, ladder);
             System.out.println();
             if(userInput.equals("all"))
                 flag = false;
         }
         System.out.println(EXPLAIN_PLAYER_RESULT);
-        printAllResultDetails();
+        printAllResultDetails(ladder);
     }
 
-    private static void printEachPlayerResult(String userInput) {
-        if (User.resultDic.containsKey(userInput)) {
+    private static void printEachPlayerResult(String userInput, LadderGame ladder) {
+        if (ladder.getResultDic().containsKey(userInput)) {
             System.out.println(EXPLAIN_PLAYER_RESULT);
-            System.out.println(User.resultDic.get(userInput));
+            System.out.println(ladder.getResultDic().get(userInput));
         }
     }
 
-    private static void printAllResultDetails() {
-        Iterator<String> keySetIterator = User.resultDic.keySet().iterator();
+    private static void printAllResultDetails(LadderGame ladder) {
+        Iterator<String> keySetIterator = ladder.getResultDic().keySet().iterator();
         while (keySetIterator.hasNext()) {
             String key = keySetIterator.next();
-            System.out.println(key + BLANK + COLON + BLANK + User.resultDic.get(key));
+            System.out.println(key + BLANK + COLON + BLANK + ladder.getResultDic().get(key));
         }
     }
 

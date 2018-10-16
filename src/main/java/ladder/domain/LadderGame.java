@@ -1,6 +1,5 @@
 package ladder.domain;
 
-import ladder.view.InputView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +8,7 @@ public class LadderGame {
     private ArrayList<LadderLine> ladders;
     private ArrayList<User> users;
     private List<String> resultOfGame;
+    private HashMap<String, String> resultDic;
 
     public LadderGame(ArrayList<User> users) {
         this.users = users;
@@ -20,12 +20,12 @@ public class LadderGame {
         }
     }
 
-    public void runGame(InputView input){
-        List<String> nameOfPlayer = input.inputNameOfPlayer();
-        resultOfGame = input.inputResult();
+    public void runGame(List<String> nameOfPlayer, List<String> resultOfGames, int numOfLadder){
         readyGame(nameOfPlayer);
+        resultOfGame = resultOfGames;
+        resultDic = new HashMap<>();
 
-        this.ladders = makeLadders(input.inputNumOfLadder());
+        this.ladders = makeLadders(numOfLadder);
         for(LadderLine ladder : ladders){
             makeLines(nameOfPlayer.size(), ladder);
         }
@@ -33,8 +33,8 @@ public class LadderGame {
         for(User user : users) {
             user.move(ladders);
             user.linkResult(resultOfGame);
+            resultDic.put(user.getName(), user.getResult());
         }
-        makeResultDic();
     }
 
     private static ArrayList<LadderLine> makeLadders(int numOfLadder){
@@ -51,24 +51,20 @@ public class LadderGame {
         }
     }
 
-    public HashMap<String, String> makeResultDic() {
-        User.resultDic = new HashMap<>();
-        for (User user : users) {
-            user.makeEachResultDic();
-        }
-        return User.resultDic;
-    }
-
     public ArrayList<LadderLine> getLadders() {
-        return ladders;
+        return this.ladders;
     }
 
     public ArrayList<User> getUsers() {
-        return users;
+        return this.users;
     }
 
     public List<String> getResultOfGame() {
-        return resultOfGame;
+        return this.resultOfGame;
+    }
+
+    public HashMap<String, String> getResultDic() {
+        return this.resultDic;
     }
 
 }

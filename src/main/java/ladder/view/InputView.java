@@ -15,7 +15,7 @@ public class InputView {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public List<String> inputNameOfPlayer() {
+    public static List<String> inputNameOfPlayer() {
         List<String> names;
         while(true) {
             try {
@@ -47,7 +47,7 @@ public class InputView {
         }
     }
 
-    public List<String> inputResult() {
+    public static List<String> inputResult() {
         System.out.println(ASK_RESULT_OF_GAME);
         return splitNames(sc.nextLine());
     }
@@ -57,7 +57,7 @@ public class InputView {
         return sc.nextLine();
     }
 
-    public int inputNumOfLadder() {
+    public static int inputNumOfLadder() {
         System.out.println(ASK_HEIGHT_OF_LADDER);
         return Integer.parseInt(sc.nextLine());
     }

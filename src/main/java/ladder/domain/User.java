@@ -1,14 +1,12 @@
 package ladder.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class User {
     private String name;
     private Integer position;
     private String result;
-    public static HashMap<String, String> resultDic;
 
     public User(String name, Integer position) {
         this.name = name;
@@ -91,11 +89,11 @@ public class User {
         }
     }
 
-    void makeEachResultDic() {
-        resultDic.put(this.name,this.result);
-    }
-
     public String getName() {
         return this.name;
+    }
+
+    public String getResult() {
+        return this.result;
     }
 }
